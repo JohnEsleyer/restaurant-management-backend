@@ -1,4 +1,4 @@
-package databaseConnection
+package database
 
 import (
 	"context"
@@ -22,7 +22,7 @@ func DBinstance() *mongo.Client {
 
 	defer cancel()
 
-	err = client.Connect(ctx)
+	err = lient.Connect(ctx)
 
 	if err != nil {
 		log.Fatal(err)
@@ -32,7 +32,7 @@ func DBinstance() *mongo.Client {
 	return client
 }
 
-var client *mongo.Client = DBinstance()
+var Client *mongo.Client = DBinstance()
 
 func OpenCollection(client *mongo.Client, collectionName string) *mongo.Collection {
 	var collection *mongo.Collection = client.Database("restaurant").Collection(collectionName)
